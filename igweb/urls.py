@@ -21,6 +21,8 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from igwebapp import views
+from django.views.static import serve
+from django.urls import re_path
 
 
 urlpatterns = [
@@ -28,8 +30,10 @@ urlpatterns = [
     path('board/', include('board.urls')),
     path('accounts/', include('accounts.urls')),
     path('', include('rword.urls')),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),
+    re_path(r'^static/(?:.*)$', serve, {'document_root': settings.STATIC_ROOT, }),
 ]
 
 urlpatterns += [path('summernote/', include('django_summernote.urls'))]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#if settings.DEBUG:
+    #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
