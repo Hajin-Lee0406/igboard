@@ -35,7 +35,8 @@ SECRET_KEY = get_env_variable('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".cloudtype.app"]
+CSRF_TRUSTED_ORIGINS = ['https://*.cloudtype.app']
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
