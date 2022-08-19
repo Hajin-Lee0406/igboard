@@ -11,7 +11,14 @@ from django.core.paginator import Paginator
 from django.db.models import Count
 from django.contrib import messages 
 from django.db.models import Q
+import sqlite3
 
+con = sqlite3.connect('db.sqlite3')
+cur = con.cursor()
+
+cur.execute("INSERT INTO rword (word) VALUES ('외계인'),('게임'),('젤리'),('가스'),('원자'),('폭탄'),('핵무기'),('낙서'),('훈련'),('표정'),('마약'),('책'),('심근경색'),('핵융합'),('가정용품'),('운전'),('TV'),('고양이'),('진드기'),('군인'),('행동'),('습관'),('바퀴벌레'),('전기'),('캡슐'),('직장'),('인간'),('시리얼'),('물'),('비둘기'),('심리학'),('향수'),('호흡'),('DNA'),('화석'),('니코틴'),('불'),('이동'),('고주파'),('소리'),('백만장자'),('확률'),('고양이'),('커피'),('스팸메일')")
+con.commit()
+con.close()
 
 # Create your views here.
 
